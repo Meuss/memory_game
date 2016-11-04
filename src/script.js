@@ -108,7 +108,6 @@ function reset(){
   $("img").removeClass('match');
   $("img").removeClass("face-up");
   $("#timer").stopwatch().stopwatch('reset');
-  $('#timer').stopwatch().stopwatch('start');
 }
 
 // =====================================================
