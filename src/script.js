@@ -73,7 +73,7 @@ $("li").click(function() {
         setTimeout(function() {
           $("img").not(".match").addClass('hidden');
           $("img").not(".match").removeClass("face-up");
-        }, 800);
+        }, 500);
         checkGameFinished();
       }
       
