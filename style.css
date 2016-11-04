@@ -8,7 +8,14 @@ body {
       justify-content: center;
   -ms-flex-align: center;
       align-items: center;
-  font-family: 'Merriweather Sans', sans-serif; }
+  font-family: 'Merriweather Sans', sans-serif;
+  transition: all 0.2s ease-in-out; }
+  body.finished {
+    background-color: rgba(0, 128, 0, 0.33); }
+    body.finished #timer {
+      font-size: 30px;
+      color: white;
+      background-color: green; }
 
 h1 {
   font-size: 1.5em;
@@ -16,7 +23,7 @@ h1 {
 
 #container {
   width: 1520px;
-  margin: 50px 0px; }
+  margin-bottom: 50px; }
 
 ol {
   padding-left: 0px;
@@ -48,11 +55,11 @@ img {
 
 button {
   overflow: hidden;
-  border: 1px solid #fff !important;
+  border: 1px solid #00476b !important;
   border: none;
   font-family: inherit;
   font-size: inherit;
-  color: inherit;
+  color: #00476b;
   background: none;
   cursor: pointer;
   padding: 15px 40px;
@@ -64,9 +71,11 @@ button {
   outline: none;
   position: relative;
   transition: all 0.3s; }
-  button:hover::after {
-    height: 220%;
-    opacity: 1; }
+  button:hover {
+    color: white; }
+    button:hover::after {
+      height: 220%;
+      opacity: 1; }
 
 button::after {
   content: '';
@@ -77,6 +86,27 @@ button::after {
   height: 0;
   top: 50%;
   left: 50%;
-  background: #fff;
+  background: #00476b;
   opacity: 0;
   transform: translateX(-50%) translateY(-50%) rotate(45deg); }
+
+.github {
+  width: 1520px;
+  height: 40px;
+  position: relative; }
+
+a {
+  position: absolute;
+  right: 20px; }
+  a svg {
+    height: 40px;
+    width: 40px; }
+    a svg path {
+      transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67); }
+  a:hover path {
+    fill: #00476b; }
+
+#timer {
+  color: green;
+  transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  padding: 5px 25px; }

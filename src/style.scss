@@ -5,6 +5,15 @@ body {
   justify-content: center;
   align-items: center;
   font-family: 'Merriweather Sans', sans-serif;
+  transition: all 0.2s ease-in-out;
+  &.finished {
+    background-color: rgba(0,128,0,0.33);
+    #timer {
+      font-size: 30px;
+      color: white;
+      background-color: green;
+    }
+  }
 }
 
 h1 {
@@ -13,7 +22,7 @@ h1 {
 }
 #container { 
   width: 1520px;
-  margin: 50px 0px;
+  margin-bottom: 50px;
 }
 ol {
   padding-left: 0px;
@@ -50,11 +59,11 @@ img {
 }
 button {
   overflow: hidden;
-  border: 1px solid #fff!important;
+  border: 1px solid #00476b!important;
   border: none;
   font-family: inherit;
   font-size: inherit;
-  color: inherit;
+  color: #00476b;
   background: none;
   cursor: pointer;
   padding: 15px 40px;
@@ -67,6 +76,7 @@ button {
   position: relative;
   transition: all 0.3s;
   &:hover {
+    color: white;
     &::after {
     height: 220%;
     opacity: 1;
@@ -82,7 +92,34 @@ button::after {
   height: 0;
   top: 50%;
   left: 50%;
-  background: #fff;
+  background: #00476b;
   opacity: 0;
   transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
+.github{
+  width: 1520px;
+  height: 40px;
+  position: relative
+}
+a {
+  position: absolute;
+  right: 20px;
+  svg {
+    height: 40px;
+    width: 40px;
+    path{
+      transition: all 0.2s cubic-bezier(.17,.67,.83,.67);
+    }
+  }
+  &:hover {
+    path {
+      fill: #00476b;
+    }
+  }
+}
+
+#timer {
+  color: green;
+  transition: all 0.2s cubic-bezier(.17,.67,.83,.67);
+  padding: 5px 25px;
 }
