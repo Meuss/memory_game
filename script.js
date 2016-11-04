@@ -64,6 +64,7 @@ $("li").click(function() {
       if (guess1 === guess2) { 
         console.log("gj bronze");
         $("li").children("img[src='" + guess2 + "']").addClass("match");
+        checkGameFinished();
       } 
       
       // else it's a miss
@@ -73,6 +74,7 @@ $("li").click(function() {
           $("img").not(".match").addClass('hidden');
           $("img").not(".match").removeClass("face-up");
         }, 800);
+        checkGameFinished();
       }
       
       // reset
@@ -100,8 +102,31 @@ function randomizeImages(){
 }
 // reset button
 function reset(){
-  console.log('reset');
+  // console.log('reset');
+  $('body').removeClass("finished");
   $("img").addClass('hidden');
   $("img").removeClass('match');
   $("img").removeClass("face-up");
+  $("#timer").stopwatch().stopwatch('reset');
+  $('#timer').stopwatch().stopwatch('start');
+}
+
+// =====================================================
+// Stopwatch
+// =====================================================
+
+$(document).ready(function() {
+    $('#timer').stopwatch().stopwatch('start');
+});
+
+// =====================================================
+// Detect end of game
+// =====================================================
+
+function checkGameFinished(){
+  if ($("img.match.face-up").length == $("img").length) {
+    $('body').addClass("finished");
+    console.log("GG NOOB");
+    $('#timer').stopwatch().stopwatch('toggle');
+  }
 }
