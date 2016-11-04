@@ -10,7 +10,7 @@ while (i--) {
 }
 
 let images2 = ranNums.map(function(ranNum){
-  return '/images/' + ranNum + '.jpg';
+  return './images/' + ranNum + '.jpg';
 })
 
 let lastArrayLength = images2.length * 2;
