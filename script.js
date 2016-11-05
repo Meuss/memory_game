@@ -155,8 +155,33 @@ TweenMax.staggerFrom("li", 1, { y:200, opacity:0, ease:Power4.easeIn, force3D:tr
 // =====================================================
 // JSON
 // =====================================================
-function sendForm(){
-  console.log('hey');
-  // e.preventDefault();
-}
+$(document).ready(function(){
+    $('form').on('submit', function(e){
+        e.preventDefault();
+        var $nickname = $("#nickname");
+        var $finaltime = $("#finaltime");
+        var $finaltimeformatted = $("#finaltimeformatted");
+        var params = {
+        nickname: $nickname.val(),
+        finaltime: $finaltime.val(),
+        finaltimeformatted: $finaltimeformatted.val(),
+        }
 
+        $.ajax({
+          type: 'POST',
+          data: params,
+          url: 'save_leaderboard.php',
+
+          success: function(data) {
+              console.log('success');
+            },
+            error: function(data) {
+              console.log('error');
+            },
+            complete: function() {
+              console.log('complete');
+            }
+        });
+        return false;
+    });
+});
