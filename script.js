@@ -38,6 +38,14 @@
   let count = 0;
 
   $("li").click(function() {
+
+    // start the timer ?
+    if($('#timer').hasClass('stopped')){
+      $('#timer').removeClass('stopped');
+      $('#timer').stopwatch().stopwatch('start');
+    }
+
+    // check the guesses
     if ((count < 2) &&  ($(this).children("img").hasClass("face-up")) === false) {
       
       count++;
@@ -114,21 +122,8 @@ function repeatArray(arr, count) {
 // =====================================================
 
 function reset(){
-  let $img = $('img');
-  $('body').removeClass("finished");
-  $img.addClass('hidden');
-  $img.removeClass('match');
-  $img.removeClass("face-up");
-  $("#timer").stopwatch().stopwatch('reset');
+  location.reload();
 }
-
-// =====================================================
-// Stopwatch
-// =====================================================
-
-$(document).ready(function() {
-    $('#timer').stopwatch().stopwatch('start');
-});
 
 // =====================================================
 // Detect end of game
@@ -136,8 +131,30 @@ $(document).ready(function() {
 
 function checkGameFinished(){
   if ($("img.match.face-up").length == $("img").length) {
-    $('body').addClass("finished");
-    $('#timer').stopwatch().stopwatch('toggle');
+    finishTheGame();
   }
+}
+function finishTheGame(){
+  $('body').addClass("finished");
+  $('#timer').stopwatch().stopwatch('toggle');
+  let score = $('#timer').text();
+  $('form span').empty().text(score);
+  $('form #finaltime').val('').val(score);
+}
+
+
+
+// =====================================================
+// Greensock
+// =====================================================
+TweenMax.staggerFrom("li", 1, { y:200, opacity:0, ease:Power4.easeIn, force3D:true}, 0.05);
+
+
+// =====================================================
+// JSON
+// =====================================================
+function sendForm(){
+  console.log('hey');
+  // e.preventDefault();
 }
 

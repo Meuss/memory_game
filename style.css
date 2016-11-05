@@ -1,5 +1,10 @@
+html {
+  height: 100%; }
+
 body {
   background-color: #ccc;
+  margin: 0;
+  height: auto;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -12,6 +17,10 @@ body {
   transition: all 0.2s ease-in-out; }
   body.finished {
     background-color: rgba(0, 128, 0, 0.33); }
+    body.finished .modal-outer {
+      z-index: 2;
+      pointer-events: auto;
+      opacity: 1; }
     body.finished #timer {
       font-size: 30px;
       color: white;
@@ -22,7 +31,7 @@ h1 {
   margin-left: 44px; }
 
 #container {
-  width: 1520px;
+  width: 80%;
   margin-bottom: 50px; }
 
 ol {
@@ -38,18 +47,26 @@ li {
   height: 150px;
   cursor: pointer;
   background-color: #00476b;
+  border-radius: 3px;
+  transition: box-shadow 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67), background-color 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
   background-image: url("data:image/svg+xml,%3Csvg width='48' height='64' viewBox='0 0 48 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M48 28v-4L36 12 24 24 12 12 0 24v4l4 4-4 4v4l12 12 12-12 12 12 12-12v-4l-4-4 4-4zM8 32l-6-6 10-10 10 10-6 6 6 6-10 10L2 38l6-6zm12 0l4-4 4 4-4 4-4-4zm12 0l-6-6 10-10 10 10-6 6 6 6-10 10-10-10 6-6zM0 16L10 6 4 0h4l4 4 4-4h4l-6 6 10 10L34 6l-6-6h4l4 4 4-4h4l-6 6 10 10v4L36 8 24 20 12 8 0 20v-4zm0 32l10 10-6 6h4l4-4 4 4h4l-6-6 10-10 10 10-6 6h4l4-4 4 4h4l-6-6 10-10v-4L36 56 24 44 12 56 0 44v4z' fill='%23000000' fill-opacity='0.11' fill-rule='evenodd'/%3E%3C/svg%3E"); }
+  li:hover {
+    box-shadow: 1px 1px 10px 0px rgba(0, 0, 0, 0.9);
+    background-color: #004061; }
 
 img {
-  width: 100%;
-  height: 100%;
+  width: 98%;
+  height: 98%;
+  padding: 1%;
   opacity: 1;
+  background-color: #00476b;
+  border-radius: 3px;
   transform: scale(1.05);
   transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
   visibility: visible; }
   img.hidden {
     opacity: 0;
-    transform: scale(1);
+    transform: scale(1) rotate(3deg);
     transition: all 0.1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
     visibility: hidden; }
 
@@ -90,26 +107,94 @@ button::after {
   opacity: 0;
   transform: translateX(-50%) translateY(-50%) rotate(45deg); }
 
-.github {
-  width: 1520px;
-  height: 40px;
-  position: relative; }
-
-a {
-  position: absolute;
-  right: 20px; }
-  a svg {
-    height: 40px;
-    width: 40px; }
-    a svg path {
-      transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67); }
-  a:hover path {
-    fill: #00476b; }
-
 #timer {
+  font-size: 20px;
   color: green;
   transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
   padding: 5px 25px; }
+  #timer.stopped {
+    color: #00476b; }
 
 img.match {
-  filter: grayscale(1); }
+  filter: blur(2px) grayscale(1); }
+
+.modal-outer {
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center; }
+  .modal-outer .modal {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 50px black;
+    background-color: white;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+        flex-direction: column;
+    -ms-flex-align: center;
+        align-items: center; }
+
+form {
+  text-align: center;
+  height: 250px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column; }
+  form input {
+    width: 300px;
+    height: 40px;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 0px;
+    border: 1px solid #00476b;
+    outline: none; }
+  form span {
+    color: green;
+    font-size: 40px; }
+  form .submit {
+    border-radius: 0px;
+    background-color: #00476b;
+    border: 1px solid #00476b;
+    color: white;
+    font-size: 14px;
+    cursor: pointer; }
+
+.github {
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  -ms-flex-align: center;
+      align-items: center;
+  bottom: 15px;
+  right: 20px; }
+  .github a {
+    color: black;
+    text-decoration: none;
+    padding-right: 50px;
+    background-image: url(./github-icon.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right; }
+    .github a p {
+      margin: 5px 0px; }
+    .github a:hover {
+      color: #00476b; }
