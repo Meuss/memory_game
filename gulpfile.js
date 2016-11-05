@@ -35,8 +35,15 @@ gulp.task('sass', function(){
     .pipe(notify({ message: 'scss compiled'}));             // Notification
 });
 
+// ===================================
+// html task
+// ===================================
 
-
+gulp.task('html', function(){
+    gulp.src('index.html')                      // Source: sass file that imports all others
+    .pipe(plumber())                                        // Prevent pipe breaking if errors
+    .pipe(reload({stream:true}))                            // Reload the browser
+});
 // ===================================
 // Browser-sync task
 // ===================================
@@ -54,10 +61,11 @@ gulp.task('browser-sync', function(){
 gulp.task('watch', function(){
     gulp.watch('src/script.js', ['javascript']);
     gulp.watch('src/style.scss', ['sass']);
+    gulp.watch('index.html', ['html']);
 });
 
 // ===================================
 // Default task
 // ===================================
 
-gulp.task('default', ['javascript', 'sass', 'browser-sync', 'watch']);
+gulp.task('default', ['javascript', 'sass', 'html', 'browser-sync', 'watch']);

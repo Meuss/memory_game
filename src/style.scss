@@ -28,17 +28,12 @@ ol {
   padding-left: 0px;
   margin: 0px;
 }
-ul { 
-  padding: 0;  
-  margin: 0;
-}
+
 li {
   padding: 0;
   float: left;
   margin: 10px;
   list-style: none;
-  // outline: solid;
-  // border: 1px solid black;
   width: 170px;
   height: 150px;
   cursor: pointer;
@@ -50,11 +45,14 @@ img {
   width: 100%;
   height: 100%;
   opacity: 1;
-  transition: all 0.2s cubic-bezier(.17,.67,.83,.67);
-
+  transform: scale(1.05);
+  transition: all 0.1s cubic-bezier(.17,.67,.83,.67);
+  visibility: visible;
   &.hidden {
     opacity: 0;
+    transform: scale(1);
     transition: all 0.1s cubic-bezier(.17,.67,.83,.67);
+    visibility: hidden;
   }
 }
 button {
@@ -123,6 +121,6 @@ a {
   transition: all 0.2s cubic-bezier(.17,.67,.83,.67);
   padding: 5px 25px;
 }
-.match {
+img.match {
   filter: grayscale(1);
 }
