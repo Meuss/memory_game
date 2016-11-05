@@ -138,8 +138,10 @@ function finishTheGame(){
   $('body').addClass("finished");
   $('#timer').stopwatch().stopwatch('toggle');
   let score = $('#timer').text();
+  let scoreformatted = score.split(':').join('')
   $('form span').empty().text(score);
   $('form #finaltime').val('').val(score);
+  $('form #finaltimeformatted').val('').val(scoreformatted);
 }
 
 

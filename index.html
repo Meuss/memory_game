@@ -18,6 +18,9 @@
   <div id = "container"></div>
   <div id="timer" class="stopped"><span class="value">0</span> ms</div>​
   <button class="reset" onclick="reset();">Reset</button>
+  <div id="leaderboard">
+    <h4>Leaderboard</h4>
+  </div>
 
   <div class="modal-outer">
     <div class="modal">
@@ -27,6 +30,7 @@
       <form onsubmit="sendForm();return false;">
         <input id="nickname" name="nickname" type="text" placeholder="Nickname" class="nickname">
         <input id="finaltime" name="finaltime" type="hidden" value="">
+        <input id="finaltimeformatted" name="finaltimeformatted" type="hidden" value="">
         <input type="submit" value="Submit" class="submit">
         Your Time:<span></span> 
       </form>
@@ -44,5 +48,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.13.1/TweenMax.min.js"></script>
   <script src="script.js"></script>
   <script src="jquery.stopwatch.js"></script>
+  <script src="leaderboard_print.js"></script>
 </body>
 </html>

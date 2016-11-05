@@ -1,10 +1,27 @@
 [
   {
-    "nickname" : "Meuss",
-    "finaltime" : "00:03:00"
+  "nickname" : "Meuss",
+  "finaltime" : "00:02:53",
+  "finaltimeformatted" : "000253"
   },
   {
-    "nickname" : "Meuss",
-    "finaltime" : "00:02:00"
+  "nickname" : "Grand fou",
+  "finaltime" : "00:01:13",
+  "finaltimeformatted" : "000113"
+  },
+  {
+  "nickname" : "Jesus",
+  "finaltime" : "00:01:19",
+  "finaltimeformatted" : "000113"
+  },
+  {
+  "nickname" : "Tardis",
+  "finaltime" : "00:03:56",
+  "finaltimeformatted" : "000113"
+  },
+  {
+  "nickname" : "Og",
+  "finaltime" : "00:00:43",
+  "finaltimeformatted" : "000113"
   }
 ]

@@ -126,7 +126,7 @@ button::after {
   }
 }
 img.match {
-  filter: blur(2px) grayscale(1);
+  filter: grayscale(1);
 }
 
 // =====================================================
@@ -211,4 +211,16 @@ form {
       color: #00476b;
     }
   }
+}
+// =====================================================
+// leaderboard
+// =====================================================
+#leaderboard {
+  background-color: white;
+  border-radius: 5px;
+  margin-bottom: 100px;
+  padding: 10px 20px;
+  h4 {
+    margin-top: 0px;
+  }  
 }
