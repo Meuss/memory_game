@@ -9,7 +9,7 @@ $(function(){
     // sort data array by finaltimeformatted value
     console.log(data);
     $.each(data, function(index, val) {
-      scoreboard += "<div><span>"+val.nickname+"</span><span>"+val.finaltime+"</span</div>";
+      scoreboard += "<div class=\"single-score\"><span>" + val.nickname + "</span><span>" + val.finaltime + "</span></div>";
     });
 
 

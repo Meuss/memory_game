@@ -220,7 +220,13 @@ form {
   border-radius: 5px;
   margin-bottom: 100px;
   padding: 10px 20px;
+  width: 300px;
   h4 {
     margin-top: 0px;
+  }
+  .single-score {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
   }  
 }
