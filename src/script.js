@@ -173,14 +173,16 @@ $(document).ready(function(){
           url: 'save_leaderboard.php',
 
           success: function(data) {
-              console.log('success');
-            },
-            error: function(data) {
-              console.log('error');
-            },
-            complete: function() {
-              console.log('complete');
-            }
+            console.log('success');
+            $('.modal').addClass('success');
+          },
+          error: function(data) {
+            console.log('error');
+            $('.modal').addClass('error');
+          },
+          complete: function() {
+            console.log('complete');
+          }
         });
         return false;
     });

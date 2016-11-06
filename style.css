@@ -150,14 +150,35 @@ img.match {
         flex-direction: column;
     -ms-flex-align: center;
         align-items: center; }
+    .modal-outer .modal.success form, .modal-outer .modal.success h3 {
+      transform: scale(0); }
+    .modal-outer .modal.success .saved {
+      transform: scale(1);
+      height: auto; }
+    .modal-outer .modal.error form, .modal-outer .modal.error h3 {
+      transform: scale(0); }
+    .modal-outer .modal.error .error {
+      transform: scale(1);
+      height: auto; }
+    .modal-outer .modal button:hover {
+      color: green; }
+
+.saved, .error {
+  transition: all 0.2s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  transform: scale(0);
+  height: 0px;
+  font-size: 40px; }
 
 form {
   text-align: center;
+  transition: all 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
   height: 250px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
       flex-direction: column; }
+  form h3 {
+    transition: all 0.4s cubic-bezier(0.17, 0.67, 0.83, 0.67); }
   form input {
     width: 300px;
     height: 40px;
