@@ -36,7 +36,7 @@
         <input type="submit" value="Submit" class="submit">
         Your Time:<span></span> 
       </form>
-      <button onclick="reset();">Restart</button>
+      <button onclick="location.reload();">Restart</button>
       <div class="github">
         <a href="https://github.com/Meuss/memory_game">
           <p><i>... see project on github</i></p>
@@ -50,7 +50,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.13.1/TweenMax.min.js"></script>
   <script src="compiled/script.js"></script>
   <script src="jquery.stopwatch.js"></script>
-  <script></script>
+  <script>TweenMax.staggerFrom('li', 1, { y: 200, opacity: 0, ease: Power4.easeIn, force3D: true }, 0.05);
+</script>
   <script src="leaderboard_print.js"></script>
 </body>
 </html>

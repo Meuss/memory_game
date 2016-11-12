@@ -2,13 +2,39 @@
 
 // 2016 Thomas Miller
 
+// =====================================================
+// Detect end of game
+// =====================================================
+
+function checkGameFinished() {
+  if ($('img.match.face-up').length === $('img').length) {
+    $('body').addClass('finished');
+    $('#timer').stopwatch().stopwatch('toggle');
+    var score = $('#timer').text();
+    var scoreformatted = score.split(':').join('');
+    $('form span').empty().text(score);
+    $('form #finaltime').val('').val(score);
+    $('form #finaltimeformatted').val('').val(scoreformatted);
+  }
+}
+
 {
   (function () {
+    var repeatArray = function repeatArray(arr, count) {
+      var ln = arr.length;
+      var b = [];
+      var k = void 0;
+      for (k = 0; k < count; k += 1) {
+        b.push(arr[k % ln]);
+      }
+      return b;
+    };
+
     // =====================================================
     // randomize array of images
     // =====================================================
     var randomizeImages = function randomizeImages() {
-      Array.prototype.randomize = function () {
+      Array.prototype.randomize = function randomizing() {
         var v = this.length;
         var w = void 0;
         var temp = void 0;
@@ -38,6 +64,7 @@
       return './images/' + ranNum + '.jpg';
     });
     var lastArrayLength = images2.length * 2;
+
     var images = repeatArray(images2, lastArrayLength);
 
     // create the markup
@@ -56,7 +83,7 @@
     var guess2 = '';
     var count = 0;
 
-    $('li').click(function () {
+    $('li').click(function playmemory() {
       // start the timer ?
       if ($('#timer').hasClass('stopped')) {
         $('#timer').removeClass('stopped');
@@ -101,39 +128,6 @@
 // Repeat array (for double images)
 // =====================================================
 
-function repeatArray(arr, count) {
-  var ln = arr.length;
-  var b = [];
-  var i = void 0;
-  for (i = 0; i < count; i += 1) {
-    b.push(arr[i % ln]);
-  }
-  return b;
-}
-
-// =====================================================
-// Detect end of game
-// =====================================================
-
-function checkGameFinished() {
-  if ($('img.match.face-up').length === $('img').length) {
-    finishTheGame();
-  }
-}
-function finishTheGame() {
-  $('body').addClass('finished');
-  $('#timer').stopwatch().stopwatch('toggle');
-  var score = $('#timer').text();
-  var scoreformatted = score.split(':').join('');
-  $('form span').empty().text(score);
-  $('form #finaltime').val('').val(score);
-  $('form #finaltimeformatted').val('').val(scoreformatted);
-}
-
-// =====================================================
-// Greensock
-// =====================================================
-TweenMax.staggerFrom('li', 1, { y: 200, opacity: 0, ease: Power4.easeIn, force3D: true }, 0.05);
 
 // =====================================================
 // JSON

@@ -1,5 +1,21 @@
 // 2016 Thomas Miller
 
+// =====================================================
+// Detect end of game
+// =====================================================
+
+function checkGameFinished() {
+  if ($('img.match.face-up').length === $('img').length) {
+    $('body').addClass('finished');
+    $('#timer').stopwatch().stopwatch('toggle');
+    const score = $('#timer').text();
+    const scoreformatted = score.split(':').join('');
+    $('form span').empty().text(score);
+    $('form #finaltime').val('').val(score);
+    $('form #finaltimeformatted').val('').val(scoreformatted);
+  }
+}
+
 {
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
   const randomNumbers = [];
@@ -14,6 +30,16 @@
 
   const images2 = randomNumbers.map(ranNum => `./images/${ranNum}.jpg`);
   const lastArrayLength = images2.length * 2;
+
+  function repeatArray(arr, count) {
+    const ln = arr.length;
+    const b = [];
+    let k;
+    for (k = 0; k < count; k += 1) {
+      b.push(arr[k % ln]);
+    }
+    return b;
+  }
   const images = repeatArray(images2, lastArrayLength);
 
   // create the markup
@@ -32,7 +58,7 @@
   let guess2 = '';
   let count = 0;
 
-  $('li').click(function () {
+  $('li').click(function playmemory() {
     // start the timer ?
     if ($('#timer').hasClass('stopped')) {
       $('#timer').removeClass('stopped');
@@ -73,7 +99,7 @@
   // randomize array of images
   // =====================================================
   function randomizeImages() {
-    Array.prototype.randomize = function () {
+    Array.prototype.randomize = function randomizing() {
       let v = this.length;
       let w;
       let temp;
@@ -95,39 +121,6 @@
 // Repeat array (for double images)
 // =====================================================
 
-function repeatArray(arr, count) {
-  const ln = arr.length;
-  const b = [];
-  let i;
-  for (i = 0; i < count; i += 1) {
-    b.push(arr[i % ln]);
-  }
-  return b;
-}
-
-// =====================================================
-// Detect end of game
-// =====================================================
-
-function checkGameFinished() {
-  if ($('img.match.face-up').length === $('img').length) {
-    finishTheGame();
-  }
-}
-function finishTheGame() {
-  $('body').addClass('finished');
-  $('#timer').stopwatch().stopwatch('toggle');
-  const score = $('#timer').text();
-  const scoreformatted = score.split(':').join('');
-  $('form span').empty().text(score);
-  $('form #finaltime').val('').val(score);
-  $('form #finaltimeformatted').val('').val(scoreformatted);
-}
-
-// =====================================================
-// Greensock
-// =====================================================
-TweenMax.staggerFrom('li', 1, { y: 200, opacity: 0, ease: Power4.easeIn, force3D: true }, 0.05);
 
 // =====================================================
 // JSON
