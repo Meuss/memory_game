@@ -211,7 +211,7 @@ form {
     color: black;
     text-decoration: none;
     padding-right: 50px;
-    background-image: url(./github-icon.svg);
+    background-image: url(../github-icon.svg);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right; }
